@@ -47,9 +47,9 @@
 ### Association
 - belongs_to :user
 - belongs_to :item
-- has_one :customer_info
+- has_one :customers
 
-## customer_info テーブル
+## customers テーブル
 
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
