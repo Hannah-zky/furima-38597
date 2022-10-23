@@ -54,7 +54,7 @@
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
 | order         | references | null: false, foreign_key: true |
-| zip           | string     | null: false                    |
+| zipcode       | string     | null: false                    |
 | prefecture_id | integer    | null: false                    |
 | city          | string     | null: false                    |
 | address_line  | string     | null: false                    |
