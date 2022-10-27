@@ -1,13 +1,13 @@
 FactoryBot.define do
   factory :item do
-    name           { Faker::Commerce.product_name }
-    explanation    { Faker::Lorem.sentence }
-    category       { Category.all.sample }
-    condition      { Condition.all.sample }
-    shipping_fee   { ShippingFee.all.sample }
-    prefecture     { Prefecture.all.sample }
-    delivery_date  { DeliveryDate.all.sample }
-    price          { Faker::Number.between(from: 300, to: 9_999_999) }
+    name              { Faker::Commerce.product_name }
+    explanation       { Faker::Lorem.sentence }
+    category_id       { 2 }
+    condition_id      { 2 }
+    shipping_fee_id   { 2 }
+    prefecture_id     { 2 }
+    delivery_date_id  { 2 }
+    price             { Faker::Number.between(from: 300, to: 9_999_999) }
 
     association :user
 
