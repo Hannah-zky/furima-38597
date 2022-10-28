@@ -12,6 +12,6 @@ class User < ApplicationRecord
     validates :last_name_kana, :first_name_kana, format: { with: /\A[ァ-ヶー－]+\z/ }
   end
 
-  VARID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i
+  VARID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze
   validates :password, format: { with: VARID_PASSWORD_REGEX }
 end
