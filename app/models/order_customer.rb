@@ -1,0 +1,17 @@
+class OrderCustomer
+  include ActiveModel::Model
+  attr_accessor :zipcode, :prefecture_id, :city, :address_line, :building, :phone_number, :user_id, :item_id
+
+  with_options presence: true do
+    validates :zipcode, format: { with: /\A\d{3}[-]\d{4}\z/ }
+    validates :prefecture_id, numericality: { other_than: 1, message: "can't be blank" }
+    validates :city, :address_line, :user_id, :item_id
+    validates :phone_number, format: { with: /\A\d{10,11}\z/}
+  end
+
+  def save
+    order = Order.create(user_id: user_id, item_id: item_id)
+    Customer.create(zipcode: zipcode, prefecture_id: prefecture_id, city: city, address_line: address_line, building: building, phone_number: phone_number, order_id: order.id)
+  end
+end
+
