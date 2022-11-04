@@ -6,7 +6,7 @@ RSpec.describe OrderCustomer, type: :model do
       user = FactoryBot.create(:user)
       item = FactoryBot.create(:item)
       @order_customer = FactoryBot.build(:order_customer, user_id: user.id, item_id: item.id)
-      sleep(0.1)
+      sleep(1)
     end
 
     context '内容に問題ない場合' do
@@ -69,6 +69,11 @@ RSpec.describe OrderCustomer, type: :model do
         @order_customer.item_id = nil
         @order_customer.valid?
         expect(@order_customer.errors.full_messages).to include("Item can't be blank")
+      end
+      it 'tokenが空では保存できない' do
+        @order_customer.token = nil
+        @order_customer.valid?
+        expect(@order_customer.errors.full_messages).to include("Token can't be blank")
       end
     end
   end
