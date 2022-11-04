@@ -28,7 +28,7 @@ RSpec.describe OrderCustomer, type: :model do
       it 'zipcodeが半角のハイフンを含んだ正しい形式でないと保存できない' do
         @order_customer.zipcode = '1234567'
         @order_customer.valid?
-        expect(@order_customer.errors.full_messages).to include("Zipcode is invalid. Enter it as follows (e.g. 123-4567)")
+        expect(@order_customer.errors.full_messages).to include('Zipcode is invalid. Enter it as follows (e.g. 123-4567)')
       end
       it 'prefecture_idが1以外では保存できない' do
         @order_customer.prefecture_id = 1
@@ -53,12 +53,12 @@ RSpec.describe OrderCustomer, type: :model do
       it 'phone_numberにハイフンがあると保存できない' do
         @order_customer.phone_number = '090-1234-5678'
         @order_customer.valid?
-        expect(@order_customer.errors.full_messages).to include("Phone number is invalid. Input only number")
+        expect(@order_customer.errors.full_messages).to include('Phone number is invalid. Input only number')
       end
       it 'phone_numberが9桁以下だと保存できない' do
         @order_customer.phone_number = '012345678'
         @order_customer.valid?
-        expect(@order_customer.errors.full_messages).to include("Phone number is invalid. Input only number")
+        expect(@order_customer.errors.full_messages).to include('Phone number is invalid. Input only number')
       end
       it 'userが紐付いていなければ保存できない' do
         @order_customer.user_id = nil
