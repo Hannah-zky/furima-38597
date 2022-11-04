@@ -55,8 +55,18 @@ RSpec.describe OrderCustomer, type: :model do
         @order_customer.valid?
         expect(@order_customer.errors.full_messages).to include('Phone number is invalid. Input only number')
       end
+      it 'phone_numberが半角数字でなければ保存できない' do
+        @order_customer.phone_number = '０１２３４５６７８９'
+        @order_customer.valid?
+        expect(@order_customer.errors.full_messages).to include('Phone number is invalid. Input only number')
+      end
       it 'phone_numberが9桁以下だと保存できない' do
         @order_customer.phone_number = '012345678'
+        @order_customer.valid?
+        expect(@order_customer.errors.full_messages).to include('Phone number is invalid. Input only number')
+      end
+      it 'phone_numberが12桁以上だと保存できない' do
+        @order_customer.phone_number = '012345678912'
         @order_customer.valid?
         expect(@order_customer.errors.full_messages).to include('Phone number is invalid. Input only number')
       end
